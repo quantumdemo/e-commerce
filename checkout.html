@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - StyleCart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo"><a href="index.html" style="color: #fff; text-decoration: none;">StyleCart</a></h1>
+        </div>
+    </header>
+    <section class="container">
+        <h2 class="section-title">Checkout</h2>
+        <form id="checkout-form">
+            <h3>Shipping Information</h3>
+            <input type="text" placeholder="Full Name" required>
+            <input type="text" placeholder="Address" required>
+            <input type="text" placeholder="City" required>
+            <input type="text" placeholder="Postal Code" required>
+            <h3>Payment Information</h3>
+            <input type="text" placeholder="Card Number" required>
+            <input type="text" placeholder="Expiry Date (MM/YY)" required>
+            <input type="text" placeholder="CVC" required>
+            <button type="submit" class="btn">Place Order</button>
+        </form>
+    </section>
+    <script src="cart.js"></script>
+</body>
+</html>
