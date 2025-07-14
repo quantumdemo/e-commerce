@@ -1,9 +1,13 @@
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Lato', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
 }
 
 .container {
@@ -32,6 +36,11 @@ nav ul {
 nav a {
     color: #fff;
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ff4c60;
 }
 
 .cart {
@@ -104,6 +113,12 @@ nav a {
     border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.product-filters button:hover {
+    background-color: #333;
+    color: #fff;
 }
 
 .product-grid {
@@ -117,6 +132,12 @@ nav a {
     padding: 1rem;
     text-align: center;
     border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .product-card img {
@@ -286,4 +307,15 @@ footer {
     text-align: center;
     border-top: 1px solid #444;
     padding-top: 1rem;
+}
+
+.animated-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animated-section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
