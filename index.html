@@ -43,20 +43,26 @@
     <section id="products" class="products">
         <div class="container">
             <h2 class="section-title">Our Products</h2>
+            <div class="product-filters">
+                <button data-filter="all">All</button>
+                <button data-filter="clothing">Clothing</button>
+                <button data-filter="shoes">Shoes</button>
+                <button data-filter="bags">Bags</button>
+            </div>
             <div class="product-grid">
-                <div class="product-card">
+                <div class="product-card" data-category="clothing">
                     <img src="https://via.placeholder.com/200" alt="Clothing Item">
                     <h3>Trendy Jacket</h3>
                     <p>$49.99</p>
                     <button>Add to Cart</button>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-category="shoes">
                     <img src="https://via.placeholder.com/200" alt="Shoe Item">
                     <h3>Casual Sneakers</h3>
                     <p>$69.99</p>
                     <button>Add to Cart</button>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-category="bags">
                     <img src="https://via.placeholder.com/200" alt="Bag Item">
                     <h3>Leather Handbag</h3>
                     <p>$89.99</p>
@@ -70,6 +76,26 @@
         <div class="container">
             <h2 class="section-title">About Us</h2>
             <p>StyleCart is your one-stop shop for stylish and affordable fashion. We bring you hand-picked collections that fit your style and budget.</p>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"The best online store for fashion lovers. Great quality and fast shipping!"</p>
+                    <h4>- Alex Doe</h4>
+                </div>
+                <div class="testimonial-card">
+                    <p>"I love the unique styles at StyleCart. I always find something special."</p>
+                    <h4>- Jane Smith</h4>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Excellent customer service and a fantastic selection of products."</p>
+                    <h4>- Sam Wilson</h4>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -87,9 +113,42 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 StyleCart. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>StyleCart</h3>
+                    <p>Your one-stop shop for stylish and affordable fashion.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2025 StyleCart. All rights reserved.</p>
         </div>
     </footer>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <img id="modal-img" src="" alt="Product Image">
+            <h3 id="modal-title"></h3>
+            <p id="modal-price"></p>
+            <p>Product details go here. This is a sample description.</p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
