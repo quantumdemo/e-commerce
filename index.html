@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleCart - Fashion Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">StyleCart</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cart">🛒</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Elevate Your Style</h2>
+            <p>Shop the latest in clothing, shoes, and bags.</p>
+            <a href="#products" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200" alt="Clothing Item">
+                    <h3>Trendy Jacket</h3>
+                    <p>$49.99</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200" alt="Shoe Item">
+                    <h3>Casual Sneakers</h3>
+                    <p>$69.99</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200" alt="Bag Item">
+                    <h3>Leather Handbag</h3>
+                    <p>$89.99</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <p>StyleCart is your one-stop shop for stylish and affordable fashion. We bring you hand-picked collections that fit your style and budget.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <form id="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 StyleCart. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
