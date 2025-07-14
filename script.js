@@ -35,13 +35,6 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-const cart = {
-    items: [],
-    total: 0,
-};
-
-const cartCountElement = document.querySelector('.cart-count');
-
 function initializeProducts() {
     const productGrid = document.querySelector('.product-grid');
 
@@ -57,29 +50,10 @@ function initializeProducts() {
                     <img src="${product.image}" alt="${product.name}">
                     <h3>${product.name}</h3>
                     <p>$${product.price.toFixed(2)}</p>
-                    <button>Add to Cart</button>
+                    <button class="add-to-cart-btn">Add to Cart</button>
                 `;
 
                 productGrid.appendChild(productCard);
-            });
-
-            const addToCartButtons = document.querySelectorAll('.product-card button');
-            addToCartButtons.forEach((button, index) => {
-                button.addEventListener('click', () => {
-                    const productCard = button.parentElement;
-                    const productName = productCard.querySelector('h3').innerText;
-                    const productPrice = parseFloat(productCard.querySelector('p').innerText.replace('$', ''));
-
-                    cart.items.push({ name: productName, price: productPrice });
-                    cart.total += productPrice;
-
-                    updateCartCount();
-
-                    button.innerHTML = '✓ Added';
-                    setTimeout(() => {
-                        button.innerHTML = 'Add to Cart';
-                    }, 2000);
-                });
             });
 
             const productCards = document.querySelectorAll('.product-card');
@@ -117,15 +91,6 @@ function initializeProducts() {
 }
 
 document.addEventListener('DOMContentLoaded', initializeProducts);
-
-function updateCartCount() {
-    cartCountElement.innerText = cart.items.length;
-    const cartElement = document.querySelector('.cart');
-    cartElement.classList.add('updated');
-    setTimeout(() => {
-        cartElement.classList.remove('updated');
-    }, 300);
-}
 
 const hamburgerMenu = document.querySelector('.hamburger-menu');
 const navMenu = document.querySelector('nav ul');
