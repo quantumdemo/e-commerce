@@ -59,6 +59,11 @@ nav a:hover {
     font-size: 0.8rem;
     padding: 0.2rem 0.5rem;
     border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.cart.updated .cart-count {
+    transform: scale(1.2);
 }
 
 .hero {
@@ -136,8 +141,8 @@ nav a:hover {
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: perspective(1000px) rotateY(10deg) scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
 .product-card img {

@@ -7,6 +7,7 @@ contactForm.addEventListener('submit', function (e) {
     const name = contactForm.querySelector('input[type="text"]').value;
     const email = contactForm.querySelector('input[type="email"]').value;
     const message = contactForm.querySelector('textarea').value;
+    const submitButton = contactForm.querySelector('button');
 
     if (name === '' || email === '' || message === '') {
         alert('Please fill in all fields.');
@@ -18,8 +19,15 @@ contactForm.addEventListener('submit', function (e) {
         return;
     }
 
-    alert('Message sent!');
-    contactForm.reset();
+    submitButton.innerText = 'Sending...';
+
+    setTimeout(() => {
+        submitButton.innerText = 'Sent!';
+        setTimeout(() => {
+            submitButton.innerText = 'Send';
+            contactForm.reset();
+        }, 2000);
+    }, 1000);
 });
 
 function validateEmail(email) {
@@ -45,11 +53,21 @@ addToCartButtons.forEach((button, index) => {
         cart.total += productPrice;
 
         updateCartCount();
+
+        button.innerHTML = '✓ Added';
+        setTimeout(() => {
+            button.innerHTML = 'Add to Cart';
+        }, 2000);
     });
 });
 
 function updateCartCount() {
     cartCountElement.innerText = cart.items.length;
+    const cartElement = document.querySelector('.cart');
+    cartElement.classList.add('updated');
+    setTimeout(() => {
+        cartElement.classList.remove('updated');
+    }, 300);
 }
 
 const hamburgerMenu = document.querySelector('.hamburger-menu');
@@ -122,4 +140,11 @@ const observer = new IntersectionObserver((entries) => {
 
 animatedSections.forEach(section => {
     observer.observe(section);
+});
+
+const hero = document.querySelector('.hero');
+
+window.addEventListener('scroll', () => {
+    const scrollPosition = window.pageYOffset;
+    hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
 });
