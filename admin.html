@@ -13,7 +13,7 @@
             <h1 class="logo">StyleCart Admin</h1>
             <nav>
                 <ul>
-                    <li><a href="#" id="logout">Logout</a></li>
+                    <li class="user-links" style="display: none;"><a href="#" id="logout">Logout</a></li>
                 </ul>
             </nav>
         </div>
@@ -21,7 +21,36 @@
     <section class="container">
         <h2 class="section-title">Admin Dashboard</h2>
         <p>Welcome, Admin! Here you can manage products, orders, and users.</p>
-        <!-- Admin functionalities will be added here -->
+
+        <div id="admin-products">
+            <h3>Manage Products</h3>
+            <form id="add-product-form">
+                <input type="text" id="product-name" placeholder="Product Name" required>
+                <input type="number" id="product-price" placeholder="Product Price" required>
+                <input type="text" id="product-image" placeholder="Product Image URL" required>
+                <select id="product-category" required>
+                    <option value="clothing">Clothing</option>
+                    <option value="shoes">Shoes</option>
+                    <option value="bags">Bags</option>
+                </select>
+                <button type="submit">Add Product</button>
+            </form>
+            <table id="products-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Products will be dynamically loaded here -->
+                </tbody>
+            </table>
+        </div>
     </section>
+    <script src="auth.js"></script>
+    <script src="admin.js"></script>
 </body>
 </html>

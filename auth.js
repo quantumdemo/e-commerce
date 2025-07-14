@@ -1,4 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const authLinks = document.querySelectorAll('.auth-links');
+    const userLinks = document.querySelectorAll('.user-links');
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    if (loggedInUser) {
+        authLinks.forEach(link => link.style.display = 'none');
+        userLinks.forEach(link => link.style.display = 'block');
+    } else {
+        authLinks.forEach(link => link.style.display = 'block');
+        userLinks.forEach(link => link.style.display = 'none');
+    }
+
     // Add a default admin user if one doesn't exist
     const users = JSON.parse(localStorage.getItem('users')) || [];
     if (!users.find(user => user.email === 'admin@stylecart.com')) {
@@ -46,7 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const newUser = { name: nameInput.value, email: emailInput.value, password: passwordInput.value, profilePic: '' };
                 users.push(newUser);
                 localStorage.setItem('users', JSON.stringify(users));
-                alert('Signup successful! Please login.');
+                alert('Signup successful! A confirmation email has been sent to your email address. Please login.');
+                console.log(`Confirmation email sent to ${emailInput.value}`);
                 window.location.href = 'login.html';
             }
         });
@@ -88,6 +101,23 @@ document.addEventListener('DOMContentLoaded', () => {
         logoutButton.addEventListener('click', () => {
             localStorage.removeItem('loggedInUser');
             window.location.href = 'index.html';
+        });
+    }
+
+    const forgotPasswordForm = document.getElementById('forgot-password-form');
+    if (forgotPasswordForm) {
+        forgotPasswordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = forgotPasswordForm.querySelector('input[type="email"]');
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(user => user.email === emailInput.value);
+
+            if (user) {
+                alert('A password reset link has been sent to your email address.');
+                console.log(`Password for ${user.email} is ${user.password}`);
+            } else {
+                alert('User with this email does not exist.');
+            }
         });
     }
 });

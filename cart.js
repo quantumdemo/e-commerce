@@ -32,6 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function addToCart(product) {
+        const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+        if (!loggedInUser) {
+            alert('You must be logged in to add items to the cart.');
+            window.location.href = 'login.html';
+            return;
+        }
         cart.push(product);
         updateCart();
     }
