@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Trendy Jacket",
+        "price": 49.99,
+        "image": "https://via.placeholder.com/200",
+        "category": "clothing"
+    },
+    {
+        "id": 2,
+        "name": "Casual Sneakers",
+        "price": 69.99,
+        "image": "https://via.placeholder.com/200",
+        "category": "shoes"
+    },
+    {
+        "id": 3,
+        "name": "Leather Handbag",
+        "price": 89.99,
+        "image": "https://via.placeholder.com/200",
+        "category": "bags"
+    },
+    {
+        "id": 4,
+        "name": "Stylish T-Shirt",
+        "price": 29.99,
+        "image": "https://via.placeholder.com/200",
+        "category": "clothing"
+    },
+    {
+        "id": 5,
+        "name": "Formal Shoes",
+        "price": 99.99,
+        "image": "https://via.placeholder.com/200",
+        "category": "shoes"
+    },
+    {
+        "id": 6,
+        "name": "Crossbody Bag",
+        "price": 59.99,
+        "image": "https://via.placeholder.com/200",
+        "category": "bags"
+    }
+]
