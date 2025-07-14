@@ -4,18 +4,23 @@ const contactForm = document.getElementById('contact-form');
 contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const name = contactForm.querySelector('input[type="text"]').value;
-    const email = contactForm.querySelector('input[type="email"]').value;
-    const message = contactForm.querySelector('textarea').value;
+    const nameInput = contactForm.querySelector('input[type="text"]');
+    const emailInput = contactForm.querySelector('input[type="email"]');
+    const messageInput = contactForm.querySelector('textarea');
     const submitButton = contactForm.querySelector('button');
 
-    if (name === '' || email === '' || message === '') {
-        alert('Please fill in all fields.');
+    if (nameInput.value.trim() === '') {
+        alert('Name is required.');
         return;
     }
 
-    if (!validateEmail(email)) {
+    if (!validateEmail(emailInput.value)) {
         alert('Please enter a valid email address.');
+        return;
+    }
+
+    if (messageInput.value.trim() === '') {
+        alert('Message is required.');
         return;
     }
 
