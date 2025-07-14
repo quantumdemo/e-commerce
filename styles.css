@@ -1,19 +1,40 @@
 
+:root {
+    --primary-color: #f68b1e;
+    --secondary-color: #282828;
+    --text-color: #555;
+    --background-color: #f5f5f5;
+    --white-color: #fff;
+    --border-color: #ddd;
+}
+
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    color: var(--secondary-color);
 }
 
 .container {
     width: 90%;
     max-width: 1200px;
     margin: auto;
+}
+
+header {
+    background-color: var(--white-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 header .container {
@@ -25,6 +46,7 @@ header .container {
 .logo {
     font-size: 1.8rem;
     font-weight: 700;
+    color: var(--primary-color);
 }
 
 nav ul {
@@ -34,28 +56,39 @@ nav ul {
 }
 
 nav a {
-    color: #fff;
+    color: var(--secondary-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 nav a:hover {
-    color: #ff4c60;
+    color: var(--primary-color);
+    position: relative;
+}
+
+nav a:hover::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    bottom: -5px;
+    left: 0;
 }
 
 .cart {
-    float: right;
     font-size: 1.5rem;
     position: relative;
     cursor: pointer;
+    color: var(--secondary-color);
 }
 
 .cart-count {
     position: absolute;
     top: -10px;
     right: -15px;
-    background: #ff4c60;
-    color: white;
+    background: var(--primary-color);
+    color: var(--white-color);
     font-size: 0.8rem;
     padding: 0.2rem 0.5rem;
     border-radius: 50%;
@@ -69,7 +102,7 @@ nav a:hover {
 .hero {
     position: relative;
     background: url('https://via.placeholder.com/1200x400') center/cover no-repeat;
-    color: white;
+    color: var(--white-color);
     padding: 4rem 0;
     text-align: center;
 }
@@ -81,7 +114,7 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
 }
 
 .hero .container {
@@ -91,20 +124,25 @@ nav a:hover {
 
 .btn {
     padding: 1rem 2rem;
-    background: #ff4c60;
-    color: white;
+    background: var(--primary-color);
+    color: var(--white-color);
     text-decoration: none;
     border-radius: 5px;
-    transition: transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .btn:hover {
+    background-color: #e07b1b;
     transform: scale(1.05);
 }
 
 .section-title {
     text-align: center;
     margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
 }
 
 .product-filters {
@@ -115,39 +153,60 @@ nav a:hover {
 .product-filters button {
     margin: 0 0.5rem;
     padding: 0.5rem 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: var(--white-color);
+    color: var(--text-color);
 }
 
-.product-filters button:hover {
-    background-color: #333;
-    color: #fff;
+.product-filters button:hover, .product-filters button.active {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-color: var(--primary-color);
 }
 
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .product-card {
-    background: #f4f4f4;
-    padding: 1rem;
-    text-align: center;
+    background: var(--white-color);
     border-radius: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .product-card:hover {
-    transform: perspective(1000px) rotateY(10deg) scale(1.05);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
 .product-card img {
     width: 100%;
-    height: auto;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    font-size: 1.1rem;
+    margin: 1rem;
+}
+
+.product-card p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 1rem 1rem;
+}
+
+.product-card button {
+    width: calc(100% - 2rem);
+    margin: 0 1rem 1rem;
 }
 
 .about, .contact {
@@ -157,29 +216,48 @@ nav a:hover {
 form {
     max-width: 600px;
     margin: auto;
+    background: var(--white-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 form input, form textarea {
     width: 100%;
     margin-bottom: 1rem;
-    padding: 0.8rem;
-    border: 1px solid #ccc;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus, form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
 }
 
 form button {
+    width: 100%;
     padding: 1rem;
-    background: #333;
-    color: #fff;
+    background: var(--primary-color);
+    color: var(--white-color);
     border: none;
     border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #e07b1b;
 }
 
 footer {
-    background: #222;
-    color: #fff;
+    background: var(--secondary-color);
+    color: var(--white-color);
     text-align: center;
-    padding: 1rem 0;
+    padding: 2rem 0;
+    margin-top: 3rem;
 }
 
 .hamburger-menu {
@@ -190,7 +268,7 @@ footer {
 .hamburger-menu div {
     width: 25px;
     height: 3px;
-    background-color: white;
+    background-color: var(--secondary-color);
     margin: 5px 0;
 }
 
@@ -199,10 +277,11 @@ footer {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 60px;
+        top: 100%;
         left: 0;
         width: 100%;
-        background: #333;
+        background: var(--white-color);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     nav ul.show {
@@ -230,27 +309,29 @@ footer {
 .modal {
     display: none;
     position: fixed;
-    z-index: 100;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.6);
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+    background-color: var(--white-color);
+    margin: 10% auto;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    width: 90%;
     max-width: 500px;
     position: relative;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
 .close-button {
-    color: #aaa;
+    color: var(--text-color);
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -258,13 +339,13 @@ footer {
 
 .close-button:hover,
 .close-button:focus {
-    color: black;
+    color: var(--primary-color);
     text-decoration: none;
     cursor: pointer;
 }
 
 .testimonials {
-    background: #f4f4f4;
+    background: var(--white-color);
     padding: 3rem 0;
 }
 
@@ -275,10 +356,11 @@ footer {
 }
 
 .testimonial-card {
-    background: white;
+    background: var(--background-color);
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-left: 5px solid var(--primary-color);
 }
 
 .footer-content {
@@ -300,27 +382,133 @@ footer {
 }
 
 .footer-section a {
-    color: #fff;
+    color: var(--white-color);
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: var(--primary-color);
 }
 
 .social-links a {
     margin-right: 1rem;
+    color: var(--white-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
 }
 
 .copyright {
     text-align: center;
     border-top: 1px solid #444;
     padding-top: 1rem;
+    margin-top: 2rem;
+}
+
+/* Profile Page Styles */
+.profile-container {
+    background: var(--white-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+#profile-info {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile-pic-container {
+    position: relative;
+}
+
+#profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#profile-pic-upload {
+    display: none;
+}
+
+.upload-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: var(--primary-color);
+    color: var(--white-color);
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* Cart Page Styles */
+.cart-container {
+    background: var(--white-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 900px;
+    margin: 2rem auto;
+}
+
+#cart-items .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#cart-items .cart-item:last-child {
+    border-bottom: none;
+}
+
+#cart-summary {
+    margin-top: 2rem;
+    text-align: right;
+}
+
+#cart-total {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
 }
 
 .animated-section {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .animated-section.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+.section-title {
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }

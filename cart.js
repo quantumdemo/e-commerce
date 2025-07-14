@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 cart.forEach((item, index) => {
                     const cartItem = document.createElement('div');
+                    cartItem.classList.add('cart-item');
                     cartItem.innerHTML = `
                         <p>${item.name} - $${item.price.toFixed(2)}</p>
                         <button class="remove-from-cart" data-index="${index}">Remove</button>
@@ -64,6 +65,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (checkoutForm) {
         checkoutForm.addEventListener('submit', (e) => {
             e.preventDefault();
+
+            const inputs = checkoutForm.querySelectorAll('input');
+            let isValid = true;
+            inputs.forEach(input => {
+                if (input.value.trim() === '') {
+                    isValid = false;
+                }
+            });
+
+            if (!isValid) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
             const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
             if (!loggedInUser) {
                 alert('You must be logged in to checkout.');
