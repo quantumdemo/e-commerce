@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const users = JSON.parse(localStorage.getItem('users')) || [];
             const userExists = users.find(user => user.email === emailInput.value);
 
             if (userExists) {

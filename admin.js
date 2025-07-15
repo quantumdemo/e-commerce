@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const addProductForm = document.getElementById('add-product-form');
     const productsTableBody = document.querySelector('#products-table tbody');
+    const usersTableBody = document.querySelector('#users-table tbody');
     let products = [];
+    let users = [];
 
     function fetchProducts() {
         fetch('products.json')
@@ -10,6 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 products = data;
                 renderProducts();
             });
+    }
+
+    function fetchUsers() {
+        users = JSON.parse(localStorage.getItem('users')) || [];
+        renderUsers();
     }
 
     function renderProducts() {
@@ -26,6 +33,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 </td>
             `;
             productsTableBody.appendChild(row);
+        });
+    }
+
+    function renderUsers() {
+        usersTableBody.innerHTML = '';
+        users.forEach((user, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${user.name}</td>
+                <td>${user.email}</td>
+                <td>
+                    <button class="edit-user" data-index="${index}">Edit</button>
+                    <button class="delete-user" data-index="${index}">Delete</button>
+                </td>
+            `;
+            usersTableBody.appendChild(row);
         });
     }
 
@@ -72,6 +95,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    usersTableBody.addEventListener('click', (e) => {
+        if (e.target.classList.contains('delete-user')) {
+            const index = e.target.dataset.index;
+            users.splice(index, 1);
+            localStorage.setItem('users', JSON.stringify(users));
+            renderUsers();
+        }
+
+        if (e.target.classList.contains('edit-user')) {
+            const index = e.target.dataset.index;
+            const user = users[index];
+            const newName = prompt('Enter new user name:', user.name);
+            const newEmail = prompt('Enter new user email:', user.email);
+
+            if (newName && newEmail) {
+                users[index] = { ...user, name: newName, email: newEmail };
+                localStorage.setItem('users', JSON.stringify(users));
+                renderUsers();
+            }
+        }
+    });
+
     function updateProductsJson() {
         // In a real application, this would be a POST request to a server.
         // For this demo, we are not actually writing to the products.json file.
@@ -79,4 +124,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     fetchProducts();
+    fetchUsers();
 });
